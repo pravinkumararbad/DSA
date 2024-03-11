@@ -1,0 +1,219 @@
+﻿What will we learn?
+1. What is Recursion
+2. Example of Recursion
+3. Tracing Recursion
+4. Stack used in recursion
+5. Time Complexity
+6. Recurrence Relation
+
+- What is Recursion?
+--------------------
+The process in which a function calls itself directly or indirectly is called recursion and the corresponding function is
+called a recursive function. Using a recursive algorithm, certain problems can be solved quite easily.
+Recursion has a condition which will take care that the recursive function is not called infinitely.
+
+- How recursion works?
+----------------------
+e.g. Tail Recursion
+void fun1( int n ) {
+	if( n > 0 ) {
+		print("%d", n);
+		fun1( n-1 )
+	}
+}
+
+int main(){
+	fun1(3);
+}
+														  Calling Phase
+														    Ascending
+									fun1(3)						|             ↑						
+									  / \                       |             |
+									 /   \						|             |
+									3	fun1(2)					|             |
+										  /	\					|             |
+										 /	 \					|             |
+										2   fun1(1)				|             |
+											  /	\				|             |
+										     /   \				|             |
+											1   fun1(0)			|             |
+											       |			|             |
+												   X            ↓             |
+												                          Descending
+						           OP: 3, 2, 1                          Returning Phase
+
+e.g. Head Recursion
+void fun1( int n ) {
+	if( n > 0 ) {
+		fun1( n-1 )
+		print("%d", n);
+	}
+}
+
+int main(){
+	fun1(3);
+}
+														
+									fun1(3)				
+									  / \               
+									 /   \				
+							     fun1(2)  3     			
+								   / \	
+								  /	  \
+							  fun1(1)  2
+							    / \		
+							   /   \		
+						   fun1(0)	1
+							  |
+							  X
+
+						   OP: 1, 2, 3
+
+e.g.
+void fun1( int n ) {
+	if( n > 0 ) {
+	    doSomething; -> Executed at calling time
+		fun1( n-1 )
+		doSomething; -> Executed at returning time
+	}
+}
+
+NOTE: Recursion is as good as any for loop, but in for loop there is only ascending phase, and recursion has ascending as well
+as descending phase.
+
+- Stack used in recursion
+-------------------------
+e.g.											
+void fun1( int n ) {
+	if( n > 0 ) {
+		print("%d", n);
+		fun1( n-1 )
+	}
+}
+
+int main(){
+	fun1(3);
+}
+
+Heap
+----
+
+Stack: Size of stack for recusrion is 4, complete size is 5.
+-----
+[fun1]
+n = 0
+---------
+[fun1]
+n = 1
+---------
+[fun1]
+n = 2
+---------
+[fun1]
+n = 3
+---------
+[main]
+x = 3    
+---------
+Code
+----
+
+NOTE: So for any recustion we can say that we will make n + 1 calls. ANd same number of activation records in stack.
+
+- Time Complexity
+-----------------
+Method 1:
+---------
+Basics to know before going ahead with time complexity calculation
++ We assume every statement takes 1 unit time for execution.
+
+e.g.											
+void fun1( int n ) {
+	if( n > 0 ) {
+		print("%d", n);		-> 1 Unit of time * executing same for 3 times
+		fun1( n-1 )			
+	}
+}
+
+int main(){
+	fun1(3);
+}
+
+So the print getting calleed is based on the function call, assuming the call is being made for n time.
+The degree of  polynomial is one, so the time taken is O(n)
+
+Method 2: Using Recurrence Relation
+-----------------------------------
+e.g.											
+void fun1( int n ) {		-> T(n)
+	if( n > 0 ) {			-> 1 Unit
+		print("%d", n);		-> 1 Unit
+		fun1( n-1 )			-> T(n-1)
+	}
+}
+							-----------
+							T(n) = T(n-1)+2
+
+int main(){
+	fun1(3);
+}
+
+A recurrence relation is an equation that uses recursion to relate terms in a sequence or elements in an array. It is a way
+to define a sequence or array in terms of itself.
+
+	    - 1				n = 0
+       |
+T(n) = |
+	   |
+	    - T(n-1)+2		n > 0
+
+Using successive substitution method / induction method
+Assuming any constant values as 1
+
+	    - 1				n = 0
+       |
+T(n) = |
+	   |
+	    - T(n-1)+1		n > 0
+
+		T(n) = T(n-1)+1						  -- 1
+		T(n-1)=T(n-2)+1						  -> As call is made for next iteration
+
+So,		T(n) = T(n-1)+1
+becomes T(n) = T(n-2)+1+1 => T(n) = T(n-2)+2  -- 2
+
+substitute		T(n-2) with T(n-3)+1		  -> As call is made for next iteration
+eq 2 becomes    T(n) = T(n-3)+1+2 => T(n-3)+3 -- 3
+			.
+			.
+			.
+				T(n)=T(n-k)+k				  -- 4
+
+Assume that n-k = 0 therefore n=k
+			T(n)=T(n-n)+n
+			T(n)=T(0)+n)
+			T(n)=1+n		=> O(n)
+
+- Static Variables in Recursion:
+--------------------------------
+
+- Types of recursion:
+---------------------
+1. Tail Recursion
+-----------------
+If a function is calling itself and the recursive call being made is the last thing that is being executed in the function
+this type of recursion is called as tail recursion.
+
+2. Head Recursion
+-----------------
+If a function is calling itself and the recursive call being made is the first thing that is being executed in the function
+this type of recursion is called as head  recursion.
+
+3. Tree recursion
+-----------------
+
+4. Indirect Recursion
+---------------------
+
+5. Nested recursion
+-------------------
