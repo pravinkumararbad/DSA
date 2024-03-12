@@ -23,7 +23,7 @@ void basicHeadRecursion(int n)
 // Recursive function with static and global variables
 int staticVarRecursion(int n)
 {
-	// Output will be 25
+	// Output will be 25 for input 5
 	static int x = 0;
 	if (n > 0)
 	{
@@ -31,4 +31,26 @@ int staticVarRecursion(int n)
 		return staticVarRecursion(n - 1) + x;
 	}
 	return 0;
+}
+
+void treeRecursion(int n) {
+	if (n > 0) {
+		printf("%d", n);
+		treeRecursion(n - 1);
+		treeRecursion(n - 1);
+	}
+}
+
+void indirectRecursionA(int n) {
+	if (n > 0) {
+		printf("%d ", n);
+		indirectRecursionB(n - 1);
+	}
+}
+
+void indirectRecursionB(int n) {
+	if (n > 1) {
+		printf("%d ", n);
+		indirectRecursionA(n / 2);
+	}
 }

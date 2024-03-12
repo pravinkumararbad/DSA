@@ -211,9 +211,42 @@ this type of recursion is called as head  recursion.
 
 3. Tree recursion
 -----------------
+A linear recursion is when a function is calling itself only once.
+In tree recursion the function is calling itself for multiple times.
+
+int fun( int n ){
+	if( n > 0 ) {
+		print("%d", n);
+		fun(n-1);
+		fun(n-1);
+	}
+}
+
+OP: for input 3 -> 3 2 1 1 2 1 1 ( with 15 activation records )
+Time complexity: 2^(n-1) - 1 => O(2^n)
+Space complexity: O(n) => as same stack based on the recursion calls will be reused.
+Total calls at each level: 1 + 2 + 4 + 8 = 15 ( Sum of geometric progression terms )
 
 4. Indirect Recursion
 ---------------------
+In indirect recursion there may be more tghan one function and these functions are making calls to one another in
+a circular fasion.
+
+void funA( int n ){
+	if(n>0){ 
+		printf("%d", n);
+		funB(n-1);
+	}
+}
+
+void funB( int n ){
+	if(n>1){ 
+		printf("%d", n);
+		funA(n/2);
+	}
+}
+
+if funA(20): 20 19 9 8 4 3 1
 
 5. Nested recursion
 -------------------

@@ -1,9 +1,8 @@
 #include <stdio.h>
+#include "Recursion.h"
 
 int main() {
 	// Basic Tail Example
-	int r;
-	r = staticVarRecursion(5);
-	printf("%d", r);
+	indirectRecursionA(20);
 	return 0;
 }
