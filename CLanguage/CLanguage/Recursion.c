@@ -54,3 +54,10 @@ void indirectRecursionB(int n) {
 		indirectRecursionA(n / 2);
 	}
 }
+
+int nestedRecursion(int n) {
+	if (n > 100)
+		return n - 10;
+	else
+		return nestedRecursion(nestedRecursion(n + 11));
+}

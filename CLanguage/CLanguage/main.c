@@ -2,7 +2,7 @@
 #include "Recursion.h"
 
 int main() {
-	// Basic Tail Example
-	indirectRecursionA(20);
+	// Try out all the examples here.
+	printf("%d", exponentsUsingFactorial(5, 0));
 	return 0;
 }

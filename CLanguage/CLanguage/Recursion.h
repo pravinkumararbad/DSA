@@ -15,3 +15,6 @@ void treeRecursion(int n);
 void indirectRecursionA(int n);
 
 void indirectRecursionB(int n);
+
+// Nested recursion
+int nestedRecursion(int n);

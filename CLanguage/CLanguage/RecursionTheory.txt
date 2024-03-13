@@ -250,3 +250,11 @@ if funA(20): 20 19 9 8 4 3 1
 
 5. Nested recursion
 -------------------
+In nested recursion, recursive function will pass parameter  as a recursive call.
+int fun(int n)
+{
+	if(n>100)
+		return n-10;
+	else
+		return fun(fun(n+11));
+}

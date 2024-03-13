@@ -132,6 +132,7 @@
   <ItemGroup>
     <ClCompile Include="main.c" />
     <ClCompile Include="Recursion.c" />
+    <ClCompile Include="RecursionExamples.c" />
   </ItemGroup>
   <ItemGroup>
     <None Include="RecursionTheory.txt" />
