@@ -3,6 +3,6 @@
 
 int main() {
 	// Try out all the examples here.
-	printf("%d", exponentsUsingFactorial(5, 0));
+	printf("%d", taylorSeriesUsingRecursion(5, 2));
 	return 0;
 }

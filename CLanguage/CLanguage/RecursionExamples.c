@@ -20,7 +20,7 @@ int factorialUsingRecursion(int n) {
 	}
 }
 
-// Power using recursion
+// Power using recursion. n^m
 int exponentsUsingFactorial(int n, int m) {
 	if (m == 0) {
 		return 1;
@@ -30,6 +30,17 @@ int exponentsUsingFactorial(int n, int m) {
 	}
 }
 
-void tylorSeriesUsingRecursion() {
-
+// e^x = 1 + x/1 + x^2/2! + x^3/3! + x^4/4! + nth term
+int taylorSeriesUsingRecursion( int x, int n) {
+	static int power = 1, factorial = 1;
+	int result = 0;
+	if (n == 0) {
+		return 1;
+	}
+	else {
+		result = taylorSeriesUsingRecursion(x, n - 1);
+		power = power * x;
+		factorial = factorial * n;
+		return result + power / factorial;
+	}
 }
