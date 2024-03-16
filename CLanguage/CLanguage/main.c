@@ -2,7 +2,6 @@
 #include "Recursion.h"
 
 int main() {
-	// Try out all the examples here.
-	printf("%d", taylorSeriesUsingRecursion(5, 2));
+	printf("%d", fibonacciIterative(10));
 	return 0;
 }

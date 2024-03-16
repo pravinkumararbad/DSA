@@ -44,3 +44,48 @@ int taylorSeriesUsingRecursion( int x, int n) {
 		return result + power / factorial;
 	}
 }
+
+double taylorSeriesUsingHornerRule( int x, int n ) {
+	static double result;
+	if (n == 0) {
+		return result;
+	}
+	result = 1 + (double)x * result / n;
+	return taylorSeriesUsingHornerRule(x, n - 1);
+}
+
+double taylorSeriesIterativeMethod(int x, int y) {
+	double result = 1;
+	int i;
+	double numerator = 1;
+	double denominator = 1;
+
+	for (i = 1; i <= numerator; ++i) {
+		numerator *= x;
+		denominator *= i;
+		result += numerator / denominator;
+	}
+	return result;
+}
+
+int fibonacci(int n)
+{
+	if (n <= 1) {
+		return n;
+	}
+	return fibonacci(n - 2) + fibonacci(n - 1);
+}
+
+int fibonacciIterative(int n)
+{
+	int term1 = 0, term2 = 1, result = 0;
+	if (n <= 1) {
+		return n;
+	}
+	for (int i = 2; i <= n; ++i) {
+		result = term1 + term2;
+		term1 = term2;
+		term2 = result;
+	}
+	return result;
+}
